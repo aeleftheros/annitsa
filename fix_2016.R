@@ -27,15 +27,15 @@ n<-length(mysheets)
 mydata<-data.frame()
 
 {month<-data.frame()
-flight<-data.frame()
-arrival<-data.frame()
-departure<-data.frame()
-tranzit<-data.frame()
-fmonth<-data.frame()
-fflight<-data.frame()
-farrival<-data.frame()
-fdeparture<-data.frame()
-ftranzit<-data.frame()
+  flight<-data.frame()
+  arrival<-data.frame()
+  departure<-data.frame()
+  tranzit<-data.frame()
+  fmonth<-data.frame()
+  fflight<-data.frame()
+  farrival<-data.frame()
+  fdeparture<-data.frame()
+  ftranzit<-data.frame()
 }
 k<-0
 l<-0
@@ -52,20 +52,20 @@ for(i in 1:n){
   tranzit<-data.frame(t(data.frame(lapply(mysheets[[i]][[10]],function(x) x))))
   
   {month<-data.frame(month[-c(1,2),])
-  month[month=="'"]<-0
-  names(month)<-NULL
-  flight<-data.frame(flight[-c(1,2),])
-  flight[flight=="'"]<-0
-  names(flight)<-NULL
-  arrival<-data.frame(arrival[-c(1,2),])
-  arrival[arrival=="'"]<-0
-  names(arrival)<-NULL
-  departure<-data.frame(departure[-c(1,2),])
-  departure[departure=="'"]<-0
-  names(departure)<-NULL
-  tranzit<-data.frame(tranzit[-c(1,2),])
-  tranzit[tranzit=="'"]<-0
-  names(tranzit)<-NULL}
+    month[month=="'"]<-0
+    names(month)<-NULL
+    flight<-data.frame(flight[-c(1,2),])
+    flight[flight=="'"]<-0
+    names(flight)<-NULL
+    arrival<-data.frame(arrival[-c(1,2),])
+    arrival[arrival=="'"]<-0
+    names(arrival)<-NULL
+    departure<-data.frame(departure[-c(1,2),])
+    departure[departure=="'"]<-0
+    names(departure)<-NULL
+    tranzit<-data.frame(tranzit[-c(1,2),])
+    tranzit[tranzit=="'"]<-0
+    names(tranzit)<-NULL}
   
   {fmonth<-cbind.fill(fmonth,month)
     fflight<-cbind.fill(fflight,flight)
@@ -74,16 +74,16 @@ for(i in 1:n){
     ftranzit<-cbind.fill(ftranzit,tranzit)}
   
   for (m in 1:12){
-  k<-k+1
-  mydata[k,1]<-fixdata(i)[1]
-  mydata[k,2]<-fixdata(i)[2]
-  mydata[k,3]<-fmonth[m,l]
-  mydata[k,4]<-fixdata(i)[3]
-  mydata[k,5]<-fflight[m,l]
-  mydata[k,6]<-farrival[m,l]
-  mydata[k,7]<-fdeparture[m,l]
-  mydata[k,8]<-ftranzit[m,l]
-}
+    k<-k+1
+    mydata[k,1]<-fixdata(i)[1]
+    mydata[k,2]<-fixdata(i)[2]
+    mydata[k,3]<-fmonth[m,l]
+    mydata[k,4]<-fixdata(i)[3]
+    mydata[k,5]<-fflight[m,l]
+    mydata[k,6]<-farrival[m,l]
+    mydata[k,7]<-fdeparture[m,l]
+    mydata[k,8]<-ftranzit[m,l]
+  }
 }
 
 names(mydata)<-c("AIRPORT","YEAR","MONTH","TYPE","FLIGHTS","ARRIVALS","DEPARTURES","TRANZIT")
